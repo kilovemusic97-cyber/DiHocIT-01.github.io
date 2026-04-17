@@ -23,7 +23,6 @@ body{
     align-items:center;
     overflow:hidden;
     color:white;
-    transition:0.4s;
 }
 
 /* ===== Gradient Background ===== */
@@ -32,9 +31,9 @@ body::before{
     position:absolute;
     width:400%;
     height:400%;
-    background:linear-gradient(-45deg,#0f2027,#203a43,#2c5364,#1c1c1c);
+    background:linear-gradient(-45deg,#0f2027,#203a43,#2c5364,#000000);
     background-size:400% 400%;
-    animation:gradientMove 15s ease infinite;
+    animation:gradientMove 12s ease infinite;
     z-index:-3;
 }
 
@@ -53,47 +52,53 @@ canvas{
 /* ===== Card ===== */
 .card{
     background:rgba(255,255,255,0.08);
-    backdrop-filter:blur(15px);
-    padding:40px;
-    border-radius:20px;
-    width:380px;
+    backdrop-filter:blur(20px);
+    padding:45px 35px;
+    border-radius:25px;
+    width:360px;
     text-align:center;
-    box-shadow:0 0 40px rgba(0,0,0,0.6);
-    transition:0.3s;
+    box-shadow:0 0 60px rgba(0,0,0,0.7);
+    transition:0.4s;
 }
 
 .card:hover{
-    transform:translateY(-5px);
+    transform:translateY(-8px) scale(1.02);
 }
 
+/* Avatar */
 .card img{
-    width:130px;
+    width:120px;
     border-radius:50%;
     margin-bottom:15px;
-    border:3px solid rgba(255,255,255,0.4);
+    border:3px solid rgba(255,255,255,0.5);
+    box-shadow:0 0 20px rgba(0,255,200,0.6);
 }
 
+/* Name typing */
 #typing{
-    font-size:24px;
-    font-weight:600;
-    margin-bottom:8px;
+    font-size:26px;
+    font-weight:700;
+    margin-bottom:5px;
+    letter-spacing:1px;
 }
 
+/* Description */
 p{
     font-size:14px;
     opacity:0.85;
     margin-bottom:20px;
 }
 
+/* Buttons */
 a{
     display:block;
     padding:12px;
     margin:10px 0;
-    border-radius:10px;
+    border-radius:12px;
     text-decoration:none;
     font-weight:600;
-    background:white;
-    color:#243b55;
+    background:linear-gradient(45deg,#00c6ff,#0072ff);
+    color:white;
     transition:0.3s;
 }
 
@@ -102,10 +107,11 @@ a i{
 }
 
 a:hover{
-    transform:scale(1.05);
-    box-shadow:0 0 15px rgba(255,255,255,0.6);
+    transform:scale(1.07);
+    box-shadow:0 0 20px rgba(0,150,255,0.8);
 }
 
+/* Toggle */
 .toggle{
     position:absolute;
     top:20px;
@@ -114,18 +120,17 @@ a:hover{
     font-size:20px;
 }
 
-/* ===== Light Mode ===== */
+/* Light Mode */
 .light{
     color:#222;
 }
 
 .light .card{
-    background:rgba(255,255,255,0.85);
+    background:rgba(255,255,255,0.9);
 }
 
 .light a{
-    background:#243b55;
-    color:white;
+    background:linear-gradient(45deg,#333,#555);
 }
 </style>
 </head>
@@ -172,13 +177,12 @@ function typeEffect() {
     if (index < text.length) {
         typingElement.innerHTML += text.charAt(index);
         index++;
-        setTimeout(typeEffect, 150);
+        setTimeout(typeEffect, 120);
     }
 }
-
 typeEffect();
 
-/* ===== Particle Background ===== */
+/* ===== Particle Background (mượt hơn) ===== */
 const canvas = document.getElementById("particles");
 const ctx = canvas.getContext("2d");
 
@@ -187,21 +191,24 @@ canvas.height = window.innerHeight;
 
 let particlesArray = [];
 
-for(let i=0;i<100;i++){
+for(let i=0;i<120;i++){
     particlesArray.push({
         x:Math.random()*canvas.width,
         y:Math.random()*canvas.height,
         size:Math.random()*2,
-        speedY:Math.random()*1+0.5
+        speedY:Math.random()*1+0.3
     });
 }
 
 function animate(){
     ctx.clearRect(0,0,canvas.width,canvas.height);
-    ctx.fillStyle="rgba(0,255,150,0.6)";
+    ctx.fillStyle="rgba(0,255,200,0.7)";
     particlesArray.forEach(p=>{
-        ctx.fillRect(p.x,p.y,p.size,p.size);
+        ctx.beginPath();
+        ctx.arc(p.x,p.y,p.size,0,Math.PI*2);
+        ctx.fill();
         p.y+=p.speedY;
+
         if(p.y>canvas.height){
             p.y=0;
             p.x=Math.random()*canvas.width;
@@ -209,8 +216,13 @@ function animate(){
     });
     requestAnimationFrame(animate);
 }
-
 animate();
+
+/* Resize fix */
+window.addEventListener("resize",()=>{
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+});
 
 </script>
 
