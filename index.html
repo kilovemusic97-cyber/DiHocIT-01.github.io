@@ -1,218 +1,245 @@
 <!DOCTYPE html>
 <html lang="vi">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>LeonSo | Bio</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LeonSo | IT Student & Developer</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+    
+    <style>
+        :root {
+            --primary: #00ffc8;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+        body {
+            font-family: 'Inter', sans-serif;
+            background: #0a192f;
+            color: #e2e8f0;
+            line-height: 1.6;
+        }
 
-<style>
-*{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
-    font-family:'Poppins',sans-serif;
-}
+        header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(10, 25, 47, 0.95);
+            backdrop-filter: blur(12px);
+            z-index: 1000;
+        }
 
-body{
-    height:100vh;
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    overflow:hidden;
-    color:white;
-    transition:0.4s;
-}
+        nav {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px 40px;
+            display: flex;
+            justify-content: space-between;
+        }
 
-/* ===== Gradient Background ===== */
-body::before{
-    content:"";
-    position:absolute;
-    width:400%;
-    height:400%;
-    background:linear-gradient(-45deg,#0f2027,#203a43,#2c5364,#1c1c1c);
-    background-size:400% 400%;
-    animation:gradientMove 15s ease infinite;
-    z-index:-3;
-}
+        .logo {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 28px;
+            font-weight: 700;
+            color: var(--primary);
+        }
 
-@keyframes gradientMove{
-    0%{background-position:0% 50%;}
-    50%{background-position:100% 50%;}
-    100%{background-position:0% 50%;}
-}
+        .hero {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            background: linear-gradient(135deg, #0a192f 0%, #1e3a5f 100%);
+            position: relative;
+            overflow: hidden;
+        }
 
-/* ===== Particle ===== */
-canvas{
-    position:absolute;
-    z-index:-2;
-}
+        .hero-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 40px;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+            z-index: 2;
+        }
 
-/* ===== Card ===== */
-.card{
-    background:rgba(255,255,255,0.08);
-    backdrop-filter:blur(15px);
-    padding:40px;
-    border-radius:20px;
-    width:380px;
-    text-align:center;
-    box-shadow:0 0 40px rgba(0,0,0,0.6);
-    transition:0.3s;
-}
+        .hero-text h1 {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 4.5rem;
+            line-height: 1.05;
+        }
 
-.card:hover{
-    transform:translateY(-5px);
-}
+        .highlight {
+            color: var(--primary);
+        }
 
-.card img{
-    width:130px;
-    border-radius:50%;
-    margin-bottom:15px;
-    border:3px solid rgba(255,255,255,0.4);
-}
+        #typing {
+            font-size: 1.65rem;
+            color: #a0d8ff;
+            margin: 20px 0 30px 0;
+        }
 
-#typing{
-    font-size:24px;
-    font-weight:600;
-    margin-bottom:8px;
-}
+        .description {
+            font-size: 1.2rem;
+            max-width: 520px;
+            opacity: 0.9;
+        }
 
-p{
-    font-size:14px;
-    opacity:0.85;
-    margin-bottom:20px;
-}
+        .social-icons {
+            display: flex;
+            gap: 22px;
+            margin-top: 40px;
+        }
 
-a{
-    display:block;
-    padding:12px;
-    margin:10px 0;
-    border-radius:10px;
-    text-decoration:none;
-    font-weight:600;
-    background:white;
-    color:#243b55;
-    transition:0.3s;
-}
+        .social-icons a {
+            width: 58px;
+            height: 58px;
+            border: 2px solid rgba(0, 255, 200, 0.3);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            color: white;
+            transition: 0.4s;
+        }
 
-a i{
-    margin-right:8px;
-}
+        .social-icons a:hover {
+            background: var(--primary);
+            color: #0a192f;
+            transform: translateY(-10px);
+        }
 
-a:hover{
-    transform:scale(1.05);
-    box-shadow:0 0 15px rgba(255,255,255,0.6);
-}
+        .profile-img {
+            width: 380px;
+            height: 380px;
+            border-radius: 50%;
+            border: 6px solid var(--primary);
+            box-shadow: 0 0 70px rgba(0, 255, 200, 0.4);
+        }
 
-.toggle{
-    position:absolute;
-    top:20px;
-    right:20px;
-    cursor:pointer;
-    font-size:20px;
-}
+        canvas#particles {
+            position: absolute;
+            top: 0; left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+            opacity: 0.3;
+        }
 
-/* ===== Light Mode ===== */
-.light{
-    color:#222;
-}
-
-.light .card{
-    background:rgba(255,255,255,0.85);
-}
-
-.light a{
-    background:#243b55;
-    color:white;
-}
-</style>
+        @media (max-width: 768px) {
+            .hero-content {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+            .hero-text h1 {
+                font-size: 3.2rem;
+            }
+            .profile-img {
+                width: 280px;
+                height: 280px;
+            }
+        }
+    </style>
 </head>
-
 <body>
 
-<div class="toggle" onclick="toggleMode()">
-    <i class="fa-solid fa-moon"></i>
-</div>
+    <header>
+        <nav>
+            <div class="logo">LeonSo</div>
+        </nav>
+    </header>
 
-<canvas id="particles"></canvas>
+    <section class="hero">
+        <canvas id="particles"></canvas>
+        
+        <div class="hero-content">
+            <div class="hero-text">
+                <h1>Xin chào, mình là <span class="highlight">LeonSo</span></h1>
+                <div id="typing"></div>
+                <p class="description">
+                    Sinh viên Công nghệ Thông tin đam mê lập trình.<br>
+                    Java • Arduino • WinForms
+                </p>
+                
+                <div class="social-icons">
+                    <a href="https://www.facebook.com/duyluve5.vvd" target="_blank"><i class="fab fa-facebook-f"></i></a>
+                    <a href="https://www.tiktok.com/@duyluve5.vvd" target="_blank"><i class="fab fa-tiktok"></i></a>
+                    <a href="https://github.com/DiHocIT-01" target="_blank"><i class="fab fa-github"></i></a>
+                </div>
+            </div>
+            
+            <img src="https://via.placeholder.com/380" alt="LeonSo" class="profile-img">
+        </div>
+    </section>
 
-<div class="card">
-    <img src="https://via.placeholder.com/130">
-    <div id="typing"></div>
-    <p>IT Student | Java | Arduino | WinForms</p>
+    <script>
+        // Typing Effect
+        const texts = ["Java Developer", "Arduino Enthusiast", "WinForms Developer", "IT Student"];
+        let count = 0, index = 0;
 
-    <a href="https://www.facebook.com/duyluve5.vvd" target="_blank">
-        <i class="fa-brands fa-facebook"></i>Facebook
-    </a>
-
-    <a href="https://www.tiktok.com/@duyluve5.vvd" target="_blank">
-        <i class="fa-brands fa-tiktok"></i>TikTok
-    </a>
-
-    <a href="https://github.com/DiHocIT-01" target="_blank">
-        <i class="fa-brands fa-github"></i>GitHub
-    </a>
-</div>
-
-<script>
-
-/* ===== Dark Mode ===== */
-function toggleMode(){
-    document.body.classList.toggle("light");
-}
-
-/* ===== Typing Effect ===== */
-const text = "LeonSo";
-const typingElement = document.getElementById("typing");
-let index = 0;
-
-function typeEffect() {
-    if (index < text.length) {
-        typingElement.innerHTML += text.charAt(index);
-        index++;
-        setTimeout(typeEffect, 150);
-    }
-}
-
-typeEffect();
-
-/* ===== Particle Background ===== */
-const canvas = document.getElementById("particles");
-const ctx = canvas.getContext("2d");
-
-canvas.width = window.innerWidth;
-canvas.height = window.innerHeight;
-
-let particlesArray = [];
-
-for(let i=0;i<100;i++){
-    particlesArray.push({
-        x:Math.random()*canvas.width,
-        y:Math.random()*canvas.height,
-        size:Math.random()*2,
-        speedY:Math.random()*1+0.5
-    });
-}
-
-function animate(){
-    ctx.clearRect(0,0,canvas.width,canvas.height);
-    ctx.fillStyle="rgba(0,255,150,0.6)";
-    particlesArray.forEach(p=>{
-        ctx.fillRect(p.x,p.y,p.size,p.size);
-        p.y+=p.speedY;
-        if(p.y>canvas.height){
-            p.y=0;
-            p.x=Math.random()*canvas.width;
+        function type() {
+            if (count === texts.length) count = 0;
+            let current = texts[count];
+            let letter = current.slice(0, ++index);
+            
+            document.getElementById("typing").textContent = letter;
+            
+            if (letter.length === current.length) {
+                count++;
+                index = 0;
+                setTimeout(type, 1800);
+            } else {
+                setTimeout(type, 70);
+            }
         }
-    });
-    requestAnimationFrame(animate);
-}
+        type();
 
-animate();
+        // Particles
+        const canvas = document.getElementById("particles");
+        const ctx = canvas.getContext("2d");
 
-</script>
+        function resize() {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+        }
+        resize();
+        window.addEventListener("resize", resize);
 
+        let particles = [];
+        class Particle {
+            constructor() {
+                this.x = Math.random() * canvas.width;
+                this.y = Math.random() * canvas.height;
+                this.size = Math.random() * 2.5 + 0.5;
+                this.speed = Math.random() * 0.8 + 0.3;
+            }
+            update() { this.y += this.speed; if (this.y > canvas.height) this.y = 0; }
+            draw() {
+                ctx.fillStyle = "#00ffc8";
+                ctx.fillRect(this.x, this.y, this.size, this.size);
+            }
+        }
+
+        function init() {
+            particles = [];
+            for (let i = 0; i < 160; i++) particles.push(new Particle());
+        }
+
+        function animate() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            particles.forEach(p => { p.update(); p.draw(); });
+            requestAnimationFrame(animate);
+        }
+
+        init();
+        animate();
+    </script>
 </body>
 </html>
